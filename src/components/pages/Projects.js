@@ -1,6 +1,22 @@
+import Message from "../layout/Message";
+import {useLocation} from "react-router-dom";
+
+
 function Projects() {
+
+    const location = useLocation();
+    console.log(location)
+    let message = '';
+    if (location.state) {
+        message = location.state.message;
+    }
+
+
     return (
-        <h1>Projects</h1>
+        <div>
+            <h1>Meus Projetos</h1>
+            {message && <Message type="success" msg={message} /> }
+        </div>
     );
 }
 
