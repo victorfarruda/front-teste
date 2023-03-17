@@ -9,5 +9,6 @@
 
 .content {
     position: absolute;
+    width: 95%;
     top: 210px;
 }

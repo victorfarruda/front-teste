@@ -11,6 +11,7 @@ import {useEffect, useState} from "react";
 function Projects() {
 
     const [projects, setProjects] = useState([]);
+    const [projectMessage, setprojectMessage] = useState('');
     const [removeLoading, setremoveLoading] = useState(true);
 
     const location = useLocation();
@@ -35,6 +36,19 @@ function Projects() {
             .catch((err) => {console.log(err)})
         ,300)
     },[])
+
+    function removeProject(id) {
+        fetch(`http://localhost:5000/projects/${id}`,{
+            method: 'DELETE', headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then((resp)=> resp.json())
+            .then( data => {
+                setProjects((projects.filter((project) => project.id !== id)))
+                setprojectMessage("Projeto Removido com Sucesso!")
+            })
+            .catch(err => console.log(err))
+    }
     return (
         <>
             <div className={styles.titleContainer}>
@@ -44,6 +58,7 @@ function Projects() {
             <div className={styles.content}>
                 <div>
                     {message && <Message type="success" msg={message} /> }
+                    {projectMessage && <Message type="success" msg={projectMessage} /> }
                 </div>
 
                 <Container customClass="start">
@@ -54,6 +69,7 @@ function Projects() {
                             name={project.name}
                             budget={project.budget}
                             category={project.category}
+                            handleRemove={removeProject}
                         />
                     ))}
                     {removeLoading && <Loading/>}
