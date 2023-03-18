@@ -7,7 +7,7 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 790,
+      "cost": 1150,
       "services": [
         {
           "name": "Victor de Freitas Arruda",
@@ -20,6 +20,36 @@
           "cost": "600",
           "description": "desc",
           "id": "ce1f54f9-1e28-4903-b89f-4457e5358489"
+        },
+        {
+          "name": "Victor de Freitas Arruda",
+          "cost": "200",
+          "description": "sdsd",
+          "id": "adbfdbcf-2cca-4883-9519-39fde767e56f"
+        },
+        {
+          "name": "Victor de Freitas Arruda",
+          "cost": "10",
+          "description": "NOVO SREVIÇO",
+          "id": "36512a54-0cb9-4c7a-acbc-fa3227366a93"
+        },
+        {
+          "name": "Victor de Freitas Arruda",
+          "cost": "12",
+          "description": "NOVO SREVIÇO",
+          "id": "cbf7d353-7b13-4af5-a48f-857b0eb9cead"
+        },
+        {
+          "name": "Victor de Freitas Arruda",
+          "cost": "88",
+          "description": "NOVO SREVIÇO",
+          "id": "458bb68f-9533-43c8-baae-6ca5edf255b0"
+        },
+        {
+          "name": "NOVO",
+          "cost": "50",
+          "description": "DESC",
+          "id": "31ef7316-f92d-4af5-b8d8-2e14f5f8489d"
         }
       ],
       "id": 4
