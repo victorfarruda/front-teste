@@ -1,14 +1,27 @@
 {
   "projects": [
     {
-      "name": "NOVO 4",
-      "budget": "1510",
+      "name": "Projeto 01",
+      "budget": "1600",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 790,
+      "services": [
+        {
+          "name": "Victor de Freitas Arruda",
+          "cost": "190",
+          "description": "NOVO SREVIÇO",
+          "id": "52da187a-7c56-4f74-826c-9c1afc1656c4"
+        },
+        {
+          "name": "OUtro Serviço",
+          "cost": "600",
+          "description": "desc",
+          "id": "ce1f54f9-1e28-4903-b89f-4457e5358489"
+        }
+      ],
       "id": 4
     }
   ],
