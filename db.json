@@ -1,21 +1,14 @@
 {
   "projects": [
     {
-      "name": "Projeto 01",
+      "name": "Projeto 02",
       "budget": "1600",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 500,
-      "services": [
-        {
-          "name": "Victor de Freitas Arruda",
-          "cost": "500",
-          "description": "DESC",
-          "id": "a5a53067-53f5-47f8-a411-9504c08566ef"
-        }
-      ],
+      "cost": 0,
+      "services": [],
       "id": 4
     }
   ],
