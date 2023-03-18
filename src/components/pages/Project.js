@@ -36,6 +36,7 @@ function Project() {
         }, 500)
     }, [id])
     const createService = (project) => {
+        setMessage('')
         const lastService = project.services[project.services.length - 1]
 
         lastService.id = uuidv4()
@@ -64,11 +65,34 @@ function Project() {
                 setProject(data)
                 setServices(data.services)
                 setShowServiceForm(false)
+                setMessage("Serviço adicionado com sucesso")
+                setType('success')
             })
             .catch(err=>console.log(err))
     }
-    const removeService = () => {
+    const removeService = (id, cost) => {
+        setMessage('')
+        const servicesUpdated = project.services.filter((service)=> service.id !== id)
 
+        const projectUpdated = project
+        projectUpdated.services = servicesUpdated
+
+        projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
+
+        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(projectUpdated)
+        }).then(resp=>resp.json())
+            .then((data)=>{
+                setProject(data)
+                setServices(servicesUpdated)
+                setMessage('Serviço removido com sucesso!')
+                setType('success')
+            })
+            .catch((err=> console.log(err)))
     }
     const toggleProjectForm = () => {
         setShowProjectForm(!showProjectForm);
