@@ -8,6 +8,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Projects from "./components/pages/Projects";
 import Project from "./components/pages/Project";
+import Books from "./components/pages/Books";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                   <Route element={<Contact />} path="/contact" />
                   <Route element={<NewProject />} path="/newproject" />
                   <Route element={<Project />} path="/project/:id" />
+                  <Route element={<Books />} path="/book" />
               </Routes>
           </Container>
           <Footer/>
