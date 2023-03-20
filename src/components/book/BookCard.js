@@ -6,22 +6,23 @@ import styles from './BookCard.module.css'
 
 function BookCard({book, image}) {
   return (
-    <Card style={{ width: '14rem', margin: '0.13em' }}>
-      <Card.Img variant="top" src={"http://localhost/images/"+image.filename} />
-      <Card.Body>
-        <Card.Title>{book.title}</Card.Title>
-        <Card.Text>
-            {book.author}
-        </Card.Text>
-        <div className={styles.actions}>
-          <Link to="/newproject">
-            <Button variant="dark">Add ao carrinho</Button>
-          </Link>
-          <Link to="/newproject">
-            <Button variant="light">Comprar</Button>
-          </Link>
-        </div>
-      </Card.Body>
+    <Card style={{ width: '13rem', margin: '0.13em' }}>
+<div className={styles.card}>
+        <Link to={`/book/${book.id}`}>
+
+          <Card.Img variant="top" src={"http://localhost/images/"+image.filename} />
+          <Card.Body>
+            <Card.Title>{book.title}</Card.Title>
+            <Card.Text>
+                <div className={styles.body}>
+                    <p><span>Autor: </span>{book.author}</p>
+                    <p><span>ISBN: </span>{book.isbn}</p>
+                </div>
+            </Card.Text>
+          </Card.Body>
+
+        </Link>
+    </div>
     </Card>
   );
 }

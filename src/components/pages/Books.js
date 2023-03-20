@@ -1,7 +1,7 @@
 import Message from "../layout/Message";
 import {useLocation} from "react-router-dom";
 
-import styles from './Projects.module.css'
+import styles from './Books.module.css'
 import Container from "../layout/Container";
 import {useEffect, useState} from "react";
 import BookCard from "../book/BookCard";
@@ -42,10 +42,12 @@ function Projects() {
             <div className={styles.content}>
                 <Container >
                     {books.length > 0 && books.map((book) => (
-                        <BookCard book={book} image={book.images.length > 0 ? book.images[0] : 'undefined'}/>
+                        <BookCard key={book.id} book={book} image={book.images.length > 0 ? book.images[0] : 'undefined'}/>
                     ))}
                 </Container>
-                <BookPagination links={links} getPage={getPage}/>
+                <div className={styles.pagination}>
+                    <BookPagination links={links} getPage={getPage}/>
+                </div>
             </div>
         </>
     );
