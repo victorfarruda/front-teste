@@ -3,11 +3,26 @@ import {useEffect, useState} from "react";
 import BookPageCarousel from "./BookPageCarousel";
 import styles from './BookPage.module.css'
 import {Badge, ListGroup} from "react-bootstrap";
+import Input from "../form/Input";
+import Select from "../form/Select";
+import SubmitButton from "../form/SubmitButton";
+import BookPageInfo from "./BookPageInfo";
 
 function BookPage() {
     const {id} = useParams()
     const [book, setBook] = useState()
-
+    const [cart, setCart] = useState()
+    function handleChange(e){
+        const p = {'product': book.id, 'unit_price': book.price}
+        setCart({...p, [e.target.name]: e.target.value} )
+        console.log(cart)
+    }
+    function submit(e){
+        e.preventDefault();
+        const p = {'product': book.id, 'unit_price': book.price}
+        setCart({...p, [e.target.name]: e.target.value} )
+        console.log(cart)
+    }
     useEffect(() => {
         setTimeout(() => {
             fetch(`http://localhost/book/${id}`, {
@@ -25,71 +40,30 @@ function BookPage() {
     }, [id])
     return (
         <>
+        {book && (<>
         <div className={styles.main}>
             <div>
                 <BookPageCarousel book={book}/>
             </div>
-            <div>TESTE</div>
+            <div>
+                <form className={styles.form} onSubmit={submit}>
+                    <div className="ms-2 me-auto">
+                          <span className="fw-bold">Título: </span>
+                            {book.title} <br/>
+                          <span className="fw-bold">Preço: </span>
+                            R${book.price}
+                        <Input type="number" name="quantity" text="Quantidade"
+                       placeholder="Quantidade de livros" handleOnChange={handleChange}/>
+                        <SubmitButton type="submit" text="Adicionar ao Carrinho" value="Criar Projeto"/>
+                        <br/>
+                        <SubmitButton type="submit" text="Comprar Agora" value="Criar Projeto"/>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div>
-            <ListGroup as="ul">
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Título: </span>
-                    {book.title}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Autor: </span>
-                    {book.author}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Ano de Edição: </span>
-                    {book.edition_year}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Local de Edição: </span>
-                    {book.edition_location}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">ISBN: </span>
-                    {book.isbn}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Número de Páginas: </span>
-                    {book.pages_number}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Editora: </span>
-                    {book.publishing_company}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Volume: </span>
-                    {book.volume}
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item className="d-flex justify-content-between align-items-start">
-                <div className="ms-2 me-auto">
-                  <span className="fw-bold">Preço: </span>
-                    {book.price}
-                </div>
-              </ListGroup.Item>
-            </ListGroup>
-        </div>
+        <BookPageInfo book={book}/>
     </>
+            )}</>
     );
 }
 

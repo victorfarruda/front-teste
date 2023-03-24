@@ -8,6 +8,9 @@ function Input({type, text, name, placeholder, handleOnChange, value}) {
             type={type}
             id={name}
             name={name}
+            min={1}
+            max={5}
+            defaultValue={1}
             placeholder={placeholder}
             onChange={handleOnChange}
             value={value}/>

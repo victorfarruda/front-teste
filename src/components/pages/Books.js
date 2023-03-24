@@ -6,6 +6,7 @@ import Container from "../layout/Container";
 import {useEffect, useState} from "react";
 import BookCard from "../book/BookCard";
 import BookPagination from "../book/BookPagination";
+import Loading from "../layout/Loading";
 
 function Projects() {
 
@@ -36,6 +37,8 @@ function Projects() {
 
     return (
         <>
+            {books.length > 0 && (
+            <>
             <div className={styles.titleContainer}>
                 <h2>Livros</h2>
             </div>
@@ -49,6 +52,10 @@ function Projects() {
                     <BookPagination links={links} getPage={getPage}/>
                 </div>
             </div>
+            </>
+            )}
+            {books.length == 0 && (<Loading/>)}
+
         </>
     );
 }
