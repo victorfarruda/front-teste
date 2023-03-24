@@ -9,6 +9,7 @@ import Footer from "./components/layout/Footer";
 import Projects from "./components/pages/Projects";
 import Project from "./components/pages/Project";
 import Books from "./components/pages/Books";
+import BookPage from "./components/book/BookPage";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                   <Route element={<NewProject />} path="/newproject" />
                   <Route element={<Project />} path="/project/:id" />
                   <Route element={<Books />} path="/book" />
+                  <Route element={<BookPage />} path="/book/:id" />
               </Routes>
           </Container>
           <Footer/>
